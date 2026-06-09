@@ -1,0 +1,18 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# PyCharm
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Virtual env
+venv/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Data (optional - only if you don't want to version data)
+data/
