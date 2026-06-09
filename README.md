@@ -121,7 +121,8 @@ Finally the cleaned frame is written to `data/cleaned_data/` as both pickle and 
 
 ### A note on negative durations
 
-The negative-duration check is a diagnostic check, not routine cleaning. Chicago observes daylight saving time, and on the autumn fall-back the 1 AM hour repeats, making local timestamps in that window ambiguous. Subtracting two such naive timestamps can run backwards and produce a negative duration. Because `convert_dtypes` already nulls those ambiguous rows via `ambiguous="NaT"` and removes them, durations are computed from clean, timezone-aware timestamps — so this check should report **zero**. If you do find some negative durations, something upstream has changed and is worth investigating. The separate out-of-range filter (`< 1 min` or `> 24 h`) is the routine bulk cleaning step and is also dependent on your analysis. Feel free to change the boundaries to suit your needs.
+The negative-duration check is a diagnostic check, not routine cleaning. Chicago observes daylight saving time, and on the autumn fall-back the 1 AM hour repeats, making local timestamps in that window ambiguous. Subtracting two such naive timestamps can run backwards and produce a negative duration. Because `convert_dtypes` already nulls those ambiguous rows via `ambiguous="NaT"` and removes them, durations are computed from clean, timezone-aware timestamps — so this check should report **zero**. If you do find some negative durations, something upstream has changed and is worth investigating. The separate out-of-range filter (`< 1 min` or `> 24 h`) is the routine bulk cleaning step and is also dependent on your analysis. Feel free to change the boundaries of the **`outlier_duration_mask`** variable in the **`clean_trip_duration()`** function.
+
 
 ## Feedback
 
