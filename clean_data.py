@@ -104,11 +104,7 @@ def convert_dtypes(df, flagged_dir):
     original_df = df.copy()
     unparsed_dates = pd.DataFrame()
 
-    ambiguous_dates = pd.DataFrame({
-        "ride_id": pd.Series(dtype="string"),
-        "started_at": pd.Series(dtype=pd.DatetimeTZDtype(tz="America/Chicago")),
-        "ended_at": pd.Series(dtype=pd.DatetimeTZDtype(tz="America/Chicago"))
-    })
+    ambiguous_dates = pd.DataFrame()
 
     for col in datetime_cols:
         df[col] = pd.to_datetime(df[col], errors="coerce")
